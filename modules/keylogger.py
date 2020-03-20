@@ -21,7 +21,7 @@ def store_module_result(data_str):
         exit()
     print("--storing--")
     gh = login(username="NotMeObviously", password="KristoWasH3RE")
-    repo = gh.repository("NotMeObviously", "chapter")
+    repo = gh.repository("NotMeObviously", "chapter7")
     branch = repo.branch("master")
     print("--connecting to GitHub--")
     nameGit= random.randint(1000,10000)#"Key hour: %s - date: %s " % (time.strftime("%H:%M:%S"), time.strftime("%d/%m/%Y"))
