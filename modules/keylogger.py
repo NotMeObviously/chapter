@@ -104,10 +104,3 @@ def run():
     pythoncom.PumpMessages()
 
 
-
-kl = pyHook.HookManager()
-kl.KeyDown = KeyStroke
-
-#registra hook ed eseguilo per sempre
-kl.HookKeyboard()
-pythoncom.PumpMessages()
