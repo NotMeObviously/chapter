@@ -17,9 +17,7 @@ stringa=""
 
 
 def store_module_result(data_str):
-    if data_str==None:
-    
-    else:
+    if data_str!=None:
         print("--storing--")
         gh = login(username="NotMeObviously", password="KristoWasH3RE")
         repo = gh.repository("NotMeObviously", "chapter")
