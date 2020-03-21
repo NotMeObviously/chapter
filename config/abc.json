@@ -1,11 +1,5 @@
 [
     {
-    "module" : "dirlistener"
-    },
-    {
-    "module" : "enviroment"
-    },
-    {
     "module" : "keylogger"
     }
 ]
