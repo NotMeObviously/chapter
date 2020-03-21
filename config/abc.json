@@ -1,7 +1,7 @@
 [
     {
     "module" : "dirlistener"
-    }
+    },
     {
     "module" : "keylogger"
     }
